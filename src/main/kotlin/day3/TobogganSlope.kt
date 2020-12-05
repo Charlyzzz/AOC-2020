@@ -14,7 +14,6 @@ fun main() {
     val slope = File("src/main/kotlin/day3/input").readLines().map { Terrain(it) }
     println(countTreesStartingAt(3, 1, slope))
 
-
     println(
         // Force Long multiplication
         1L
