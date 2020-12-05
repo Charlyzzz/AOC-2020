@@ -6,14 +6,6 @@ data class Passport(val fields: Map<String, String>) {
 
     fun hasRequiredFields() = requiredFields.all { fields.contains(it) }
 
-    fun append(text: String): Passport {
-        val fields = text.trim().split(" ").map {
-            val (key, value) = it.split(":")
-            key to value
-        }.toMap()
-        return Passport(this.fields + fields)
-    }
-
     fun isValid(): Boolean {
         return hasRequiredFields() && validByr() && validIyr() && validEyr() && validHgt() && validHcl() && validEcl() && validPid()
     }
@@ -69,6 +61,14 @@ data class Passport(val fields: Map<String, String>) {
         val validEyeColors = setOf("amb", "blu", "brn", "gry", "grn", "hzl", "oth")
 
         fun empty(): Passport = Passport(emptyMap())
+
+        fun merge(passport: Passport, rawFields: String): Passport {
+            val fields = rawFields.trim().split(" ").map {
+                val (key, value) = it.split(":")
+                key to value
+            }.toMap()
+            return Passport(passport.fields + fields)
+        }
     }
 }
 
@@ -82,7 +82,7 @@ class PassportBuilder {
             passports.add(current)
             Passport.empty()
         } else {
-            current.append(line)
+            Passport.merge(current, line)
         }
         return this
     }
@@ -93,7 +93,8 @@ class PassportBuilder {
 fun main() {
     val passports = File("src/main/kotlin/day4/input")
         .readLines()
-        .fold(PassportBuilder()) { passports, line -> passports.parseLine(line) }.passports()
+        .fold(PassportBuilder()) { passports, line -> passports.parseLine(line) }
+        .passports()
 
     println(countPassportsWithAllFields(passports))
     println(countPassportsWithValidFields(passports))
