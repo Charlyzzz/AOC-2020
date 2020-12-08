@@ -1,5 +1,6 @@
 package day2
 
+import print
 import java.io.File
 
 data class Policy(val min: Int, val max: Int, val char: Char, val password: String) {
@@ -31,8 +32,8 @@ fun main() {
         val password = matches[4]
         Policy(min, max, char, password)
     }
-    println(countValidPasswordRanges(policies))
-    println(countValidPasswordPosition(policies))
+    countValidPasswordRanges(policies).print()
+    countValidPasswordPosition(policies).print()
 }
 
 fun countValidPasswordRanges(policies: List<Policy>) = policies.count { it.hasValidRange() }

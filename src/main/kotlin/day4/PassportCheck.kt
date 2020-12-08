@@ -1,5 +1,6 @@
 package day4
 
+import print
 import java.io.File
 
 data class Passport(val fields: Map<String, String>) {
@@ -96,8 +97,8 @@ fun main() {
         .fold(PassportBuilder()) { passports, line -> passports.parseLine(line) }
         .passports()
 
-    println(countPassportsWithAllFields(passports))
-    println(countPassportsWithValidFields(passports))
+    countPassportsWithAllFields(passports).print()
+    countPassportsWithValidFields(passports).print()
 }
 
 fun countPassportsWithAllFields(passports: List<Passport>) = passports.count { it.hasRequiredFields() }

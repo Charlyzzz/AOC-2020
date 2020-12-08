@@ -1,5 +1,6 @@
 package day5
 
+import print
 import kotlin.math.max
 import kotlin.math.min
 
@@ -20,8 +21,8 @@ data class FindSeatRun(val min: Int, val max: Int, val sum: Int) {
 
 fun main() {
     val boardingPasses = boardingPassesInput.lines().map { parseSeat(it) }
-    println(findHighestBoardingPassByID(boardingPasses))
-    println(findMissingSeat(boardingPasses))
+    findHighestBoardingPassByID(boardingPasses).print()
+    findMissingSeat(boardingPasses).print()
 }
 
 fun findMissingSeat(boardingPasses: List<BoardingPass>): Int =

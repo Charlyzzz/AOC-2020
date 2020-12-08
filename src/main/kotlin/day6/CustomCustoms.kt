@@ -1,9 +1,11 @@
 package day6
 
+import print
+
 fun main() {
     val groups = parseGroupInputs(groupAnswersInput)
-    countGroupAnswers(groups).also { println(it) }
-    countGroupSharedAnswers(groups).also { println(it) }
+    countGroupAnswers(groups).print()
+    countGroupSharedAnswers(groups).print()
 }
 
 fun countGroupSharedAnswers(groups: List<Group>): Int =

@@ -1,11 +1,12 @@
 package day1
 
+import print
 import java.io.File
 
 fun main() {
     val numbers = File("src/main/kotlin/day1/input").readLines().map { it.toInt() }
-    println(expenseReportWithTwoNumbers(numbers))
-    println(expenseReportWithThreeNumbers(numbers))
+    expenseReportWithTwoNumbers(numbers).print()
+    expenseReportWithThreeNumbers(numbers).print()
 }
 
 fun expenseReportWithTwoNumbers(numbers: List<Int>): Int {

@@ -1,9 +1,11 @@
 package day8
 
+import print
+
 fun main() {
     val instructions = parseInstructions(rawDeviceBootCode)
-    runProgram(instructions).also { println(it.accum) }
-    accumAfterFixingTheLoop(instructions).also { println(it) }
+    runProgram(instructions).accum.print()
+    accumAfterFixingTheLoop(instructions).print()
 }
 
 interface Result {

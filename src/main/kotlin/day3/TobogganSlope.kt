@@ -1,5 +1,6 @@
 package day3
 
+import print
 import java.io.File
 
 data class Terrain(val pattern: String) {
@@ -12,17 +13,18 @@ data class SlopeRun(val position: Int, val treesHit: Int)
 
 fun main() {
     val slope = File("src/main/kotlin/day3/input").readLines().map { Terrain(it) }
-    println(countTreesStartingAt(3, 1, slope))
+    countTreesStartingAt(3, 1, slope).print()
 
-    println(
-        // Force Long multiplication
-        1L
-                * countTreesStartingAt(1, 1, slope)
-                * countTreesStartingAt(3, 1, slope)
-                * countTreesStartingAt(5, 1, slope)
-                * countTreesStartingAt(7, 1, slope)
-                * countTreesStartingAt(1, 2, slope)
-    )
+    // Force Long multiplication
+    (
+            1L
+                    * countTreesStartingAt(1, 1, slope)
+                    * countTreesStartingAt(3, 1, slope)
+                    * countTreesStartingAt(5, 1, slope)
+                    * countTreesStartingAt(7, 1, slope)
+                    * countTreesStartingAt(1, 2, slope)
+            )
+        .print()
 }
 
 private fun countTreesStartingAt(xIncrement: Int, yIncrement: Int, slope: List<Terrain>): Int {
