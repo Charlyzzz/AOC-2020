@@ -13,6 +13,8 @@ fun countGroupSharedAnswers(groups: List<Group>): Int =
         count + group.sharedAnswersCount()
     }
 
+
+
 private fun countGroupAnswers(groups: List<Group>): Int =
     groups.fold(0) { count, group ->
         count + group.answers.size

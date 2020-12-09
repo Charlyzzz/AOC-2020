@@ -1,5 +1,6 @@
 package day8
 
+@Suppress("unused")
 val rawTestCode = """
     nop +0
     acc +1
@@ -12,6 +13,7 @@ val rawTestCode = """
     acc +6
 """.trimIndent()
 
+@Suppress("unused")
 val rawDeviceBootCode = """
     jmp +149
     acc -11

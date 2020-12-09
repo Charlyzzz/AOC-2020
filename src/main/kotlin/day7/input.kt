@@ -1,5 +1,6 @@
 package day7
 
+@Suppress("unused")
 val secondTestBagRules = """
     shiny gold bags contain 2 dark red bags.
     dark red bags contain 2 dark orange bags.
@@ -10,6 +11,7 @@ val secondTestBagRules = """
     dark violet bags contain no other bags.
 """.trimIndent()
 
+@Suppress("unused")
 val testBagRules = """
     light red bags contain 1 bright white bag, 2 muted yellow bags.
     dark orange bags contain 3 bright white bags, 4 muted yellow bags.
@@ -22,6 +24,7 @@ val testBagRules = """
     dotted black bags contain no other bags.    
 """.trimIndent()
 
+@Suppress("unused")
 val bagRules = """
     posh blue bags contain 5 plaid chartreuse bags, 3 plaid lime bags.
     clear teal bags contain 2 dotted salmon bags, 2 wavy red bags.

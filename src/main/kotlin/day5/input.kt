@@ -1,6 +1,5 @@
 package day5
 
-
 val boardingPassesInput = """
     FFBBFFBRRR
     FBFBBBBLRR
