@@ -50,11 +50,10 @@ data class Layout(
             .map { seatMap.getValue(it) }
             .count { it.isOccupied }
 
-    private fun usingRange(sequence: Sequence<Position>): Position? =
-        when {
-            longRangeAdjacent -> sequence.firstOrNull { !seatMap.getValue(it).isFloor }
-            else -> sequence.firstOrNull()
-        }
+    private fun usingRange(sequence: Sequence<Position>): Position? = when {
+        longRangeAdjacent -> sequence.firstOrNull { !seatMap.getValue(it).isFloor }
+        else -> sequence.firstOrNull()
+    }
 
     private fun move(x: Int, y: Int, pos: Position): Sequence<Position> {
         return generateSequence(pos) {
@@ -104,20 +103,18 @@ data class Seat(val pos: Pair<Int, Int>, val status: Char) {
     val isOccupied = OCCUPIED_SEAT == status
     val isFloor = FLOOR == status
 
-    fun mutate(layout: Layout): Seat {
-        return when (status) {
-            EMPTY_SEAT -> {
-                if (layout.adjacentOccupied(this) == 0)
-                    copy(status = OCCUPIED_SEAT)
-                else this
-            }
-            OCCUPIED_SEAT -> {
-                if (layout.adjacentOccupied(this) >= layout.adjacentCriteria)
-                    copy(status = EMPTY_SEAT)
-                else this
-            }
-            else -> this
+    fun mutate(layout: Layout): Seat = when (status) {
+        EMPTY_SEAT -> {
+            if (layout.adjacentOccupied(this) == 0)
+                copy(status = OCCUPIED_SEAT)
+            else this
         }
+        OCCUPIED_SEAT -> {
+            if (layout.adjacentOccupied(this) >= layout.adjacentCriteria)
+                copy(status = EMPTY_SEAT)
+            else this
+        }
+        else -> this
     }
 }
 
