@@ -1,6 +1,7 @@
+@file:Suppress("unused")
+
 package day10
 
-@Suppress("unused")
 val testAdapters = """
     16
     10
@@ -15,7 +16,6 @@ val testAdapters = """
     4
 """.trimIndent()
 
-@Suppress("unused")
 val testAdaptersLarger = """
     28
     33

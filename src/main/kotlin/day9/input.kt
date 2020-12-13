@@ -1,6 +1,7 @@
+@file:Suppress("unused")
+
 package day9
 
-@Suppress("unused")
 val testInput = """
     35
     20
@@ -24,7 +25,6 @@ val testInput = """
     576
 """.trimIndent()
 
-@Suppress("unused")
 val xmasData = """
     23
     3
